@@ -3,7 +3,6 @@ const dotenv = require('dotenv');
 const morgan = require('morgan');
 const bodyparser = require("body-parser");
 const path = require('path');
-const router = require('./server/routes/router');
 
 const connectDB = require('./server/database/connection');
 
@@ -31,6 +30,6 @@ app.use('/img', express.static(path.resolve(__dirname, "assets/img")))
 app.use('/js', express.static(path.resolve(__dirname, "assets/js")))
 
 // load routers
-app.use('/', router)
+app.use('/', require('./server/routes/router'))
 
 app.listen(PORT, ()=> { console.log(`Server is running on http://localhost:${PORT}`)});
